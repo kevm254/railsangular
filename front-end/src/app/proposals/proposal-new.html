@@ -1,0 +1,128 @@
+<div class="card container section-container">
+  <div class="row">
+    <!-- Form Section -->
+    <section class="col-md-6 form-section-container">
+
+      <h1>Create a Proposal</h1>
+
+      <!-- Form Container -->
+      <div class="form-container">
+        <form #proposalForm="ngForm">
+
+          <!-- Customer Name -->
+          <div class="form-group">
+            <label for="customer">Customer Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="customer"
+                   placeholder="Put Name Here"
+                   required
+                   name="customer"
+                   #customer="ngModel"
+                   [(ngModel)]="proposal.customer">
+            <div [hidden]="customer.valid || customer.pristine" class="alert alert-danger">Customer name is required</div>
+          </div>
+
+          <!-- Portfolio URL -->
+          <div class="form-group">
+            <label for="portfolio_url">Portfolio URL</label>
+            <input type="text"
+                   class="form-control"
+                   id="portfolio_url"
+                   placeholder="http://"
+                   required name="portfolio_url"
+                   #portfolio_url="ngModel"
+                   [(ngModel)]="proposal.portfolio_url">
+            <div [hidden]="portfolio_url.valid || portfolio_url.pristine" class="alert alert-danger">Portfolio Url is required</div>
+          </div>
+
+          <!-- Tools -->
+          <div class="form-group">
+            <label for="tools">Tools that you'll use on the project</label>
+            <input type="text"
+                   class="form-control"
+                   id="tools"
+                   placeholder="Ruby on Rails, Angular, etc."
+                   required
+                   name="tools"
+                   #tools="ngModel"
+                   [(ngModel)]="proposal.tools">
+            <div [hidden]="tools.valid || tools.pristine" class="alert alert-danger">A list of tools is required</div>
+          </div>
+
+          <!-- Estimated Hours -->
+          <div class="form-group">
+            <label for="estimated_hours">Estimated hours</label>
+            <input type="number"
+                   class="form-control"
+                   id="estimated_hours"
+                   required name="estimated_hours"
+                   #estimated_hours="ngModel"
+                   [(ngModel)]="proposal.estimated_hours">
+            <div [hidden]="estimated_hours.valid || estimated_hours.pristine" class="alert alert-danger">Estimated hours is required</div>
+          </div>
+
+          <!-- Hourly Rate -->
+          <div class="form-group">
+            <label for="hourly_rate">Hourly Rate</label>
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="number"
+                     class="form-control"
+                     id="hourly_rate"
+                     required
+                     name="hourly_rate"
+                     #hourly_rate="ngModel"
+                     [(ngModel)]="proposal.hourly_rate">
+              <div [hidden]="hourly_rate.valid || hourly_rate.pristine" class="alert alert-danger">Hourly rate is required</div>
+            </div>
+          </div>
+
+          <!-- Weeks to Complete -->
+          <div class="form-group">
+            <label for="hourly_rate">Weeks to Complete</label>
+            <input type="number"
+                   class="form-control"
+                   id="weeks_to_complete"
+                   required
+                   name="weeks_to_complete"
+                   #weeks_to_complete="ngModel"
+                   [(ngModel)]="proposal.weeks_to_complete">
+            <div [hidden]="customer.valid || customer.pristine" class="alert alert-danger">Customer name is required</div>
+          </div>
+
+          <!-- Client Email -->
+          <div class="form-group">
+            <label for="client_email">Client Email <em>(Optional)</em></label>
+            <input type="email"
+                   class="form-control"
+                   id="client_email"
+                   name="client_email"
+                   #client_email="ngModel"
+                   [(ngModel)]="proposal.client_email">
+          </div>
+
+        </form>
+      </div>
+      <!-- END Form Container-->
+
+    </section>
+    <!-- END Form Section -->
+
+    <!-- Proposal Section -->
+    <section class="col-md-6">
+      <div>
+        <p>Hi {{ proposal.customer }}</p>
+
+        <p>hi there. I like to use {{ proposal.tools }}. Come visit my project
+          <a href="{{ proposal.portfolio_url }}">here.</a></p>
+
+        <p>This project will take {{ proposal.estimated_hours }} hours. It will
+          take {{ proposal.weeks_to_complete }} weeks to complete. My rate is
+          {{ proposal.hourly_rate | currency:USD:true:'.0' }}. The estimated total will be {{ estimatedTotal }}.</p>
+      </div>
+    </section>
+    <!-- END Proposal Section -->
+
+  </div>
+</div>

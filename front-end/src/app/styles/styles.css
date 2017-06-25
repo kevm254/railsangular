@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #252830;
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+}
+
+.headline {
+  color: white;
+}
